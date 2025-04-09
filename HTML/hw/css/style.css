@@ -1,0 +1,224 @@
+:root {
+	font-size: 16px;
+}
+
+body {
+	/* overflow: hidden; */
+	user-select: none;
+	/* cursor: grab; */
+	background: #e5e4cf;
+	font-family: "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Helvetica", "Arial", "sans-serif";
+    -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	--color-text: #a0893d;
+	--color-link: #000;
+}
+
+/* navbar */
+.header{
+    border-bottom: 1px solid gray;
+    background-color: #e5e4cf;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .toggleBars{
+    border: 1px solid #a0893d;
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    float: left;
+} 
+
+.fa-bars{
+    font-size: 25px;
+    color: #a0893d;
+    line-height: 40px;
+    width: 40px;
+    text-align: center;
+}
+
+.header img {
+    height: 46px;
+    float: left;
+}
+
+.signInBtn {
+    color: #a0893d;
+    width: 70px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    float: right;
+    text-decoration: none;
+
+    
+}
+
+.signInBtn:hover{
+    color: #000;
+}
+
+.nav {
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    margin: auto;
+    width: fit-content; /* 讓內容寬度剛好包含所有 <a> 標籤 */
+}
+.nav a {
+    text-decoration: none;
+    /* border-right: 1px solid gray; */
+    color: #a0893d;
+    margin: 0;
+    padding: 0 15px;
+    font-weight: 500;
+}
+
+.nav a:last-child{
+    border-right: 0; /* 移除nav最右邊的線 */
+}
+
+.row{
+    padding: 1.5%;
+}
+
+/* slide photo */
+.center{
+    margin: auto;
+}
+
+.d-block{
+    object-fit: cover; 
+    width: 920px;
+    height: 550px;
+}
+
+.carousel{
+    margin-top: 50px;
+}
+
+.carousel-caption{
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.carousel-control-prev{
+    color: #a0893d;
+}
+
+/* 相關新聞 */
+/* 左邊col-md-3 */
+.sideCategory{
+    margin-bottom: 30px;
+}
+
+.sideTitle{
+    color: #e5e4cf;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.3em;
+}
+
+.selected{
+    border: 1.5px solid #a0893d;
+}
+
+/* 右邊col-md-9 */
+.flex{
+    display: flex;
+    margin: 0;
+}
+
+.subTitle{
+    color: #e5e4cf;
+    background-color: #a0893d;
+    padding:5px 15px;
+    border-radius: 5px;
+}
+
+.resultBlock{
+    margin-top: 15px;
+}
+
+.description{
+    margin-top: 12px;
+}
+
+
+
+/* event card */
+.title{
+    font-weight: 800;
+    margin: -20px auto 20px auto;
+    padding: 0;
+}
+
+
+.card{
+    background-color: #fff;
+    border-radius: 20px;
+    min-height: 500px; /* 設置統一高度 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 讓內容均勻分布 */
+}
+
+.card-img-top{
+    object-fit: cover; 
+    width: 100%;
+    height: 220px;
+    border-radius: 20px 20px 0 0; /* 確保圖片邊角一致 */
+}
+
+.card-title{
+    font-weight: 700;
+}
+
+.card-title2{
+    font-weight: 650;
+}
+
+.card-text{
+    margin-left: 8px;
+    font-weight: 480;
+    color: #777777;
+    line-height: normal;
+}
+
+.card-img-top{
+    border-radius: 20px 20px 0 0;
+}
+
+.card-block{
+    border-radius: 20px;
+    position: relative;
+    /* bottom: 10px; */
+    background-color: #fff;
+    
+    flex-grow: 1; /* 讓文字部分填滿剩餘空間 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 30px;
+}
+
+.card-block table tr td:first-child{
+    margin-right: 25px;
+}
+
+.card-block table tr td .fa-solid{
+    color: #777777;
+}
+
+.fa-ellipsis-vertical, .moreInfo{
+    color: #a0893d;
+}
+
+.fa-ellipsis-vertical:hover, .moreInfo:hover{
+    color: #000;
+}

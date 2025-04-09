@@ -1,0 +1,4 @@
+a.in:link{text-decoration: none;}
+a.in:visited{color: dodgerblue;}
+a.in:hover{text-decoration: underline; color: lightblue;}
+a.in:active{color: cadetblue;}

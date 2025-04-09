@@ -1,0 +1,47 @@
+/* 設定整個表單的寬度 => 讓子層以及孫層的區塊元素符合此寬度 */
+form{
+    width: 500px;
+    /* border: 5px solid red; */
+    margin: auto;
+}
+
+.t1 {
+  float: left;
+  width: 100px;
+  /* background-color: pink; */
+  text-align: right;
+  margin-right: 10px;
+}
+
+.q1 {
+  border-bottom: 2px dashed gray;
+  /* width: 450px; */
+  padding: 20px;
+}
+
+.btn {
+  /* width: 450px; */
+  text-align: center;
+  padding: 20px;
+}
+
+/* 控制項群組 */
+fieldset{
+    margin: 20px 0;
+    border-radius: 30px;
+    border:3px solid black;
+}
+
+legend{
+    padding: 0 20px;
+    text-align: center;
+}
+
+fieldset>:last-child{
+    border-bottom: 0;
+}
+
+/* .t1 ~ input,
+.t1 ~ textarea {
+  width: calc(100% - 110px);
+} */
