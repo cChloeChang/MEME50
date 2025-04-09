@@ -1,0 +1,31 @@
+h1,h2,h3,h4,h5,h6,ol{
+    margin: auto 2%;
+}
+p{
+    text-align: justify;
+    line-height: 2em;
+    margin: auto 2%;
+    font-family: "LXGW WenKai TC", serif;
+}
+h1, h3, h4, figcaption{
+    font-family: "LXGW WenKai TC", serif;
+}
+img{
+    border-radius: 5%;
+}
+figcaption{
+    color: gray;
+    /* text-align: left; */
+}
+li.popular{
+    color: palevioletred;
+    font-size: 30px;
+    font-family: "Agu Display", serif;
+    font-optical-sizing: auto;
+    font-variation-settings:"MORF" 0;
+}
+a.newslink{
+    color: #555555; text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+}
