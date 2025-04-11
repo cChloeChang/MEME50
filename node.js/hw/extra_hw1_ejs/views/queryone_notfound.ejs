@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h2 class="title">員工編號: </h2>
+    <form method="get" action="http://localhost:8181/employee/getone" class="table">
+        <label>empno : </label>
+        <input type="text" name="empno">
+        
+        <input type="submit" disabled="disabled">
+    </form>
+
+    <% if (message) { %>
+        <p class="message <%= status %>"><%= message %></p>
+    <% } %>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="public/css/style.css">
+</head>
+<body>
+    <h2 class="title">Input Employee no: </h2>
+    <form method="get" action="http://localhost:8181/employee/getone">
+        <label>empno : </label>
+        <input type="text" name="empno" pattern="[0-9]{4}" title="請輸入 4 位數字" required>
+        
+        <input type="submit">
+    </form>
+</body>
+</html>

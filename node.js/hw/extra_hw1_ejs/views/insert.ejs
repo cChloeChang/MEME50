@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h2 class="title">新增員工資料</h2>
+    <% if (message && message !== '') { %>
+        <p class="message <%= status %>" id="msg"><%= message %></p>
+    <% } %>
+    
+    <form method="post" action="http://localhost:8181/employee/insert" class="table">
+        <label>員工編號:</label>
+        <input type="text" name="empno" pattern="[0-9]{4}" title="請輸入 4 位數字" required>
+        <label>姓名:</label>
+        <input type="text" name="ename" required>
+        <label>到職日:</label>
+        <input type="date" name="hiredate" required>
+        <label>薪資:</label>
+        <input type="text" name="salary" required>
+        <label>部門編號:</label>
+        <input type="text" name="deptno" required>
+        <label>職稱:</label>
+        <input type="text" name="title" required>
+        
+        <input type="submit">
+    </form>
+
+    <script>
+        // 獲取提示訊息元素
+        const messageElement = document.getElementById("msg");
+        
+        // 如果提示訊息存在，2 秒後隱藏它
+        if (messageElement) {
+            setTimeout(function() {
+                messageElement.style.display = 'none'; // 將元素隱藏
+            }, 2000); // 2000 毫秒 = 2 秒
+        }
+    </script>
+</body>
+</html>

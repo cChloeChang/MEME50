@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>員工資料處理</title>
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2 class="title">員工資料處理</h2>
+
+    <div class="function-container">
+        <div class="function-block">
+            <!-- <a href="http://localhost:8181/employee/getall" class="button">取得全部員工資料</a> -->
+            <button id="getAllBtn" class="button">取得全部員工資料</button>
+        </div>
+
+        <div class="function-block">
+            <form method="get" action="http://localhost:8181/employee/search" class="search-form" id="searchForm">
+                <input type="text" name="searchInput" placeholder="輸入員工姓名或部門編號" class="search-input">
+                <input type="submit" value="查詢" class="button" id="searchBtn">
+            </form>
+        </div>
+
+        <div class="function-block">
+            <a href="http://localhost:8181/employee/insert" class="button">新增</a>
+        </div>
+    </div>
+
+    <div>
+        <table id="result"></table>
+    </div>
+
+    <script>
+        $("#getAllBtn").on("click", function(event) {
+            event.preventDefault(); // 阻止表單提交造成頁面刷新
+
+            $.ajax({
+                url: "http://localhost:8181/employee/getall",
+                type: "GET",
+                data: $(this).serialize(), // 傳送表單內容
+                dataType: "json",
+                success: function(data) {
+                    console.log("前端收到資料:", data);
+                    console.log(typeof data[0]); // 如果沒打dataType，從後端回傳的物件會被解析為string，表格就無法正確顯示，會出現一堆undefined在表格上
+                    search(data);
+                }
+            });
+        });
+
+        $("#searchForm").on("submit", function(event) {
+            event.preventDefault(); // 阻止表單提交造成頁面刷新
+
+            $.ajax({
+                url: $(this).attr("action"), // 將請求的 URL 設置為表單的 action 屬性值
+                type: "GET",
+                data: $(this).serialize(), // 傳送表單內容
+                dataType: "json",
+                success: function(data) {
+                    console.log("前端收到資料:", data);
+                    console.log(typeof data[0]); // 如果沒打dataType，從後端回傳的物件會被解析為string，表格就無法正確顯示，會出現一堆undefined在表格上
+                    search(data);
+                }
+            });
+        });
+        
+        function search(emp){
+            let txt = "<tr><th>員工編號</th><th>姓名</th><th>部門編號</th><th>職稱</th><th>刪除</th></tr>";
+
+            if (emp.length === 0) {
+                txt += "<tr><td colspan='6'>查無資料</td></tr>";
+            } else {
+                for (let i = 0; i < emp.length; i++) {
+                    txt += "<tr><td>" + emp[i].empno + "</td>";
+                    txt += `<td><a class="ename" href="http://localhost:8181/employee/getone?empno=${emp[i].empno}">${emp[i].ename}</a></td>`;
+                    // txt += "<td>" + emp[i].hiredate + "</td>";
+                    // txt += "<td>" + emp[i].salary + "</td>";
+                    txt += "<td>" + emp[i].deptno + "</td>";
+                    txt += "<td>" + emp[i].title + "</td>";
+                    txt += `<td>
+                                <button class="delete" data-empno="${emp[i].empno}" onclick="deleteData(this)">
+                                    <i class="fa-solid fa-user-xmark"></i>
+                                </button>
+                            </td></tr>`;
+                }
+            }
+            $("#result").html(txt);
+        }
+
+        // delete
+        function deleteData(button) {
+            let empno = button.dataset.empno; // 抓 data-empno 的值
+
+            // 添加確認對話框
+            if (confirm("確定要刪除此員工資料嗎？")) {
+                $.ajax({
+                    url: "http://localhost:8181/employee/delete",
+                    type: "POST",
+                    data: { empno: empno }, // 傳遞 empno 給後端
+                    dataType:"json",
+                    success: function(data) {
+                        if (data.success === true) { // 明確檢查是否為布林值 true
+                            let row = $(button).closest('tr'); // button往父元素找到tr
+                            row.remove();
+                            alert(data.message);
+                        } else {
+                            alert(data.message || "刪除失敗，請稍後再試");
+                        }
+                    },
+                    error: function(error) {
+                        console.log("錯誤:", error);
+                        alert("刪除過程中發生錯誤，請稍後再試");
+                    }
+                });
+            } else {
+                // 用戶取消刪除，顯示提示（可選）
+                alert("已取消刪除操作");
+            }
+        }
+    </script>
+</body>
+</html>

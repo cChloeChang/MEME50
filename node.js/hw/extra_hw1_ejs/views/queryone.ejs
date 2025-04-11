@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>員工資料</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2 class="title">員工資料</h2>
+    <!-- <div id="message" style="color: green; margin-bottom: 10px; display: none;"></div> -->
+    <% if (message && message !== '') { %>
+        <p class="message <%= status %>" id="msg"><%= message %></p>
+    <% } %>
+    <table border="1" class="table">
+        <tr>
+            <td></td>
+            <td>
+                <button class="edit-btn" id="edit" title="編輯"><i class="fa-regular fa-pen-to-square"> 點此編輯資料</i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>員工編號</td>
+            <td>
+                <input type="text" id="empno" class="modify" value="<%= emp.empno %>" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>姓名</td>
+            <td>
+                <input type="text" id="ename" class="modify" value="<%= emp.ename %>" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>到職日</td>
+            <td>
+                <input type="text" id="hiredate" class="modify" value="<%= emp.hiredate %>" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>薪資</td>
+            <td>
+                <input type="text" id="salary" class="modify" value="<%= emp.salary %>" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>部門編號</td>
+            <td>
+                <input type="text" id="deptno" class="modify" value="<%= emp.deptno %>" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>職稱</td>
+            <td>
+                <input type="text" id="title" class="modify" value="<%= emp.title %>" disabled>
+            </td>
+        </tr>
+        <tr id="edit-controls" class="edit-controls" style="display: none;">
+            <td colspan="2">
+                <button id="save-btn" class="save">儲存</button>
+                <button id="cancel-btn" class="cancel">取消</button>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        // 編輯按鈕事件
+        // document.getElementById("edit").addEventListener("click", function() {
+        //     console.log("編輯按鈕被點擊");
+        //     document.querySelectorAll("input").forEach(input => input.removeAttribute("disabled"));
+        //     document.getElementById("edit-controls").style.display = "table-row"; // 顯示儲存 & 取消按鈕
+        // });
+        $("#edit").on("click", function() {
+            console.log("編輯按鈕被點擊");
+            $("input").removeAttr("disabled");
+            $("#edit-controls").show(); // 顯示儲存 & 取消按鈕
+        });
+    
+        // 取消按鈕事件
+        document.getElementById("cancel-btn").addEventListener("click", function() {
+            console.log("取消按鈕被點擊");
+            document.querySelectorAll("input").forEach(input => input.setAttribute("disabled", "true"));
+            document.getElementById("edit-controls").style.display = "none"; // 隱藏儲存 & 取消按鈕
+            
+            // 恢復原始數據
+            document.getElementById("empno").value = "<%= emp.empno %>";
+            document.getElementById("ename").value = "<%= emp.ename %>";
+            document.getElementById("hiredate").value = "<%= emp.hiredate %>";
+            document.getElementById("salary").value = "<%= emp.salary %>";
+            document.getElementById("deptno").value = "<%= emp.deptno %>";
+            document.getElementById("title").value = "<%= emp.title %>";
+        });
+
+        // 儲存按鈕事件 - use Ajax 
+        $("#save-btn").on("click", function() {
+            console.log("儲存按鈕被點擊");
+            
+            // 獲取表單數據
+            const empData = {
+                empno: $("#empno").val().trim(),
+                ename: $("#ename").val().trim(),
+                hiredate: $("#hiredate").val().trim(),
+                salary: $("#salary").val().trim(),
+                deptno: $("#deptno").val().trim(),
+                title: $("#title").val().trim()
+            };
+
+            console.log("準備發送數據:", empData);
+
+            // 發送 Ajax 請求
+            $.ajax({
+                url: '/employee/update',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(empData),
+                dataType: 'json',
+                success: function(data) {
+                    console.log("處理數據:", data);
+                    // 重新導向到 queryone.ejs，後端會渲染帶有 message 和 status 的頁面
+                    window.location.href = `/employee/getone?empno=${empData.empno}`;
+                },
+                error: function(xhr, status, error) {
+                    console.log("錯誤詳細資訊 - 狀態:", status, "錯誤:", error, "回應:", xhr.responseText);
+                    alert("發生錯誤，請稍後再試");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
