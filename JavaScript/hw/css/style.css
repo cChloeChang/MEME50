@@ -1,0 +1,72 @@
+body{
+    margin: 0;
+}
+
+header{
+    border-bottom: 1px solid gray;
+    background-color: #e5e4cf;
+    /* position: fixed;
+    top: 0; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    margin: auto;
+    width: fit-content; /* 讓內容寬度剛好包含所有 <a> 標籤 */
+}
+
+nav a {
+    text-decoration: none;
+    border-right: 1px solid gray; 
+    color: #a0893d;
+    margin: 0;
+    padding: 0 15px;
+    font-weight: 600;
+}
+
+nav a:last-child{
+    border-right: 0; /* 移除nav最右邊的線 */
+}
+
+.title {
+    display: block; 
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+    box-sizing: border-box;
+    margin-bottom: 0;
+}
+
+.subTitle{
+    text-align: center;
+    margin-top: 0;
+}
+
+/* 九九乘法表 */
+table{
+    border-collapse: collapse;
+    margin: auto;
+    /* background-color: #f2f1e3; */
+    font-size: 18px;
+}
+
+tr{
+    height:40px;
+    padding: auto 30px;
+}
+
+td{
+    width: 100px;
+    border:1px solid#333;
+    text-align: center;
+}
+
+td:nth-child(2n){
+    background-color: #f2f1e3;
+}

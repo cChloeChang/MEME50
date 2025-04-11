@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW2_檢查表單</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/form.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="HW1_multiTable.html">九九乘法表</a>
+            <a href="HW2_formCheck.html">檢查表單</a>
+            <a href="HW3_rating.html">評點製作</a>
+            <a href="HW4_carousel.html">廣告輪播</a>
+            <!-- <a href="#">月曆</a>
+            <a href="#">郵遞區號</a> -->
+        </nav>
+    </header>
+
+    <h2 class="title">檢查表單</h2>
+    <h5 class="subTitle">Form Check</h5>
+
+    <form action="#" method="get" enctype="application/x-www-form-urlencoded">
+        <fieldset>
+            <legend>Form</legend>
+            <div class="q1">
+                <!-- 單行文字 -->
+                <label for="name" class="t1">姓名: </label>
+                <input type="text" name="userName" id="name">
+                <span id="usernamesp"></span><br/>
+                <span class="t2">(1. 不可空白 2. 至少兩個字以上 3. 必須全部為中文字)</span>
+            </div>
+    
+            <div class="q1">
+                <!-- 密碼 -->
+                <label for="pwd" class="t1">密碼: </label>
+                <input type="password" name="userPW" id="pwd">
+                <span id="pwdsp"></span><br/>   
+                <span class="t2">(1. 不可空白 2. 至少6個字且必須包含英數字、特殊字元[!@#$%^&*])</span>
+            </div>
+
+            <div class="q1">
+                <label for="memo" class="t1">日期: </label>
+                <input type="text" id="calendar" max="3000-01-01">
+                <span id="datesp"></span>
+                <span class="t2">格式：西元年 / 月 / 日 (yyyy/mm/dd)</span>
+            </div>
+        </fieldset>
+    </form>
+    
+    <script src="./js/formCheck.js"></script>
+</body>
+</html>

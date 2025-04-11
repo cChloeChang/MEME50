@@ -1,0 +1,25 @@
+body {
+    background: #f2f1e3;
+}
+
+.wrap {
+    width: 500px;
+    text-align: center;
+    margin: auto;
+    border-radius: 10px;
+    position: relative;
+    top: 80px;
+}
+
+.stars {
+    margin: auto;
+    padding: 15px 30px;
+    border: 3px solid #a0893d;
+    border-radius: 5px;
+}
+
+.instructionMessage{
+    margin: 15px auto;
+    font-size: 20px;
+    text-align: center;
+}

@@ -1,0 +1,72 @@
+/* 設定整個表單的寬度 => 讓子層以及孫層的區塊元素符合此寬度 */
+body{
+  background-color: #F1F0E8;
+}
+
+form{
+    width: 600px;
+    /* border: 5px solid red; */
+    margin: auto;
+}
+
+.t1 {
+  /* float: left;
+  width: 100px;
+  text-align: right; */
+  margin-right: 10px;
+}
+
+.t2 {
+  display: block; 
+  text-align: left;
+  color: #333;
+  font-size: small;
+  margin-top: 8px;
+}
+
+.q1 {
+  border-bottom: 2px dashed gray;
+  /* width: 450px; */
+  padding: 20px;
+}
+
+.btn {
+  /* width: 450px; */
+  text-align: center;
+  padding: 20px;
+}
+
+/* 控制項群組 */
+fieldset{
+    margin: 20px 0;
+    border-radius: 30px;
+    border:3px solid black;
+}
+
+legend{
+    padding: 0 20px;
+    text-align: left;
+}
+
+fieldset>:last-child{
+    border-bottom: 0;
+}
+
+/* .t1 ~ input,
+.t1 ~ textarea {
+  width: calc(100% - 110px);
+} */
+
+#usernamesp, #pwdsp, #datesp {
+  gap: 5px;
+  font-size: 14px;
+  transition: color 0.3s ease; /* 平滑變化顏色效果 */
+}
+
+#usernamesp.success, #pwdsp.success, #datesp.success {
+  color: green;
+}
+
+#usernamesp.error, #pwdsp.error, #datesp.error {
+  color: red;
+}
