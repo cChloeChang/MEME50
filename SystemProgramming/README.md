@@ -1,0 +1,13 @@
+# 嵌入式系統與韌體技術_SystemProgramming
+- shell programming
+- Makefile
+- process
+- signal
+- thread
+- Inter-Process Communication(IPC)
+  - pipe
+  - semaphore
+  - shared memory
+  - message queue
+- terminal
+- socket
