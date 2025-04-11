@@ -1,0 +1,10 @@
+總用量 56
+-rw-rw-r-- 1 ispan ispan    12  3月  4 22:34 cfile.out
+-rw-rw-r-- 1 ispan ispan    12  3月  4 21:31 file.in
+-rw------- 1 ispan ispan    12  3月  4 21:32 file.out
+-rwxrwxr-x 1 ispan ispan 16216  3月  4 21:30 filePutc
+-rw-rw-r-- 1 ispan ispan   432  3月  4 21:30 filePutc.c
+drwxrwxr-x 2 ispan ispan  4096  3月  6 09:26 labs
+-rw-rw-r-- 1 ispan ispan     0  3月  6 16:31 myfiles
+-rwxrwxr-x 1 ispan ispan 16144  3月  4 21:10 systemCallCopy
+-rw-rw-r-- 1 ispan ispan   308  3月  4 21:10 systemCallCopy.c
