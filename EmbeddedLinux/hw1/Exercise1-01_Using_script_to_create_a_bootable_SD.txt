@@ -1,0 +1,47 @@
+﻿練習 1. 請大家使用參考 lab\bootloader\lab-partition_by_parted.txt ，寫一個 script，
+利用今天的上課 /root/bootloader/lab-create_a_bootable_system/ 底下的檔案，製作可開機磁碟
+
+1. 切割 Micro SD card 為兩個 partition
+
+	若您的學號為 MEME5001，請切割 Boot Partition(partition #1, 起始sector為8192s) 大小為 51M，Root Partition(partition #2) 大小為 128M
+	若您的學號為 MEME5002，請切割 Boot Partition(partition #1, 起始sector為8192s) 大小為 52M，Root Partition(partition #2) 大小為 128M
+	若您的學號為 MEME5003，請切割 Boot Partition(partition #1, 起始sector為8192s) 大小為 53M，Root Partition(partition #2) 大小為 128M
+	依此類推
+	...
+
+2. Format these 2 partitions
+
+	Format partition #1 as FAT32 with Label "Boot".
+
+	Format partition #2 as EXT4 with Lable "MEME5001".
+
+
+3. 複製系統檔案 - 掛載 Micro SD card partition #1, partition #2 於某個路徑上，並複製系統檔
+	
+	掛載 Micro SD card partition #1, partition #2
+	
+	確認掛載成功
+	
+	將 lab-create_a_bootable_system/boot/ 目錄內的檔案複製到 Micro SD partition #1 上
+	
+	# Assume this script is located at /root/bootloader/lab-create_a_bootable_system
+	$ mount /dev/sdb1 /PATH/TO/Partition1
+	$ cp -a boot/* /PATH/TO/Partition1
+	$ umount /PATH/TO/Partition1
+	
+	將 lab-create_a_bootable_system/rootfs.tar.xz 事先製作好的 root filesystem 檔案解壓縮後，複製到 Micro SD partition #2 上
+
+	# Assume this script is located at /root/bootloader/lab-create_a_bootable_system
+	...
+	$ mount /dev/sdb2 /PATH/TO/Partition2
+	$ cp -a rootfs/* /PATH/TO/Partition2
+	$ umount /PATH/TO/Partition2
+	
+4. 將這個檔案命名為 in MEMEXXID_hw1.sh (e.g. MEME5001_hw1.sh)，並上傳到 Google Driver 的連結上
+
+	Due-date: 4/2
+	Please upload to 
+    	Google Drive:
+	https://drive.google.com/drive/folders/1UXXeVvC3qQnptJ-a2X7Gb7wbx_Fu-N-_?usp=sharing
+
+
