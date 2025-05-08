@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>環境監控面板</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.9.0/sql-wasm.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+        <div class="sidebar">
+            <div class="logo">監控系統</div>
+        </div>
+        <div class="main-content">
+            <div class="dashboard-cards">
+                <div class="card">
+                    <h2>門鎖控制</h2>
+                    <div class="toggle-container">
+                        <button class="door-btn" id="open-door">開門</button>
+                        <button class="door-btn" id="close-door">關門</button>
+                        <div id="door-status">狀態：關閉</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>音量監測</h2>
+                    <div class="decibel-container">
+                        <div class="decibel-meter">
+                            <div class="decibel-bar" id="decibel-bar"></div>
+                        </div>
+                        <div class="decibel-value" id="decibel-value">0 dB</div>
+                    </div>
+                </div>
+
+                <div class="card temp-humidity">
+                    <h2>溫溼度</h2>
+                    <div class="temp-humidity-container">
+                        <div class="temp-value">
+                            <span class="temp-label">溫度：</span>
+                            <span id="temperature">--</span>
+                            <span class="unit">°C</span>
+                        </div>
+                        <div class="humidity-value">
+                            <span class="humidity-label">濕度：</span>
+                            <span id="humidity">--</span>
+                            <span class="unit">%</span>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="card">
+                    <h2>電子圍籬</h2>
+                    <div class="fence-container">
+                        <div class="fence-status">
+                            <div class="status-icon" id="fence-icon">🔒</div>
+                            <div class="status-text" id="fence-text">安全：無人入侵</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card air-quality">
+                    <h2>空氣品質監測</h2>
+                    <div class="air-quality-container">
+                        <div class="chart-container">
+                            <canvas id="airQualityChart"></canvas>
+                        </div>
+                        <div class="summary-container">
+                            <div class="summary-face" id="gauge-face">😊</div>
+                            <div class="summary-value" id="gauge-value">97.78%</div>
+                            <div class="summary-label" id="gauge-label">優秀</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+/* 基本設置 */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    min-height: 100vh;
+}
+
+/* 側邊欄 */
+
+/* 漢堡選單按鈕預設只在小螢幕顯示 */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 2000;
+    background: #2f49d0;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 2rem;
+    padding: 6px 16px;
+    cursor: pointer;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #171717;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: white;
+}
+
+/* 主內容區 */
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+}
+
+.date {
+    font-size: 1rem;
+    color: #a0a0a0;
+}
+
+/* 卡片樣式 */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #303030;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+/* 門控制 */
+.toggle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* 垂直置中 */
+    height: 100%; /* 確保容器填滿整個卡片高度 */
+}
+
+.door-btn {
+    background-color: #2f49d0;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.door-btn:hover {
+    background-color: #3d5df0;
+}
+
+#door-status {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+/* 分貝監測 */
+.decibel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* 垂直置中 */
+    height: 100%; /* 確保容器填滿整個卡片高度 */
+    padding: 10px;
+}
+
+.decibel-meter {
+    width: 100%;
+    height: 30px;
+    background-color: #353535;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.decibel-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #2f49d0 0%, #7d1c8d 100%);
+    transition: width 0.5s ease;
+}
+
+.decibel-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+/* 溫溼度 */
+.temp-humidity-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 16px;
+}
+
+.temp-value, .humidity-value {
+    font-size: 2rem;
+    color: #fff;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.temp-label, .humidity-label {
+    font-size: 1.1rem;
+    color: #a0a0a0;
+}
+
+.unit {
+    font-size: 1.2rem;
+    color: #888;
+}
+
+
+/* 電子圍籬 */
+.fence-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 垂直置中 */
+    align-items: center; /* 水平置中 */
+    height: 100%; /* 確保容器填滿整個卡片高度 */
+    padding: 15px;
+}
+
+.fence-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.status-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.status-text {
+    font-size: 1.2rem;
+    color: #a0a0a0;
+}
+
+/* 空氣品質 */
+.air-quality {
+    grid-column: 1 / -1; /* 讓它橫跨全部欄位(這個元素從第一條網格線開始，跨到最後一條網格線) */
+    min-height: 320px;
+    max-width: 1400px;
+}
+
+.air-quality-container {
+    display: flex;
+    height: 100%;
+    gap: 20px;
+}
+
+.chart-container {
+    flex: 7;
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
+
+.summary-container {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.summary-face {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.summary-value {
+    font-size: 2.5rem;
+    color: #2f49d0;
+    margin-bottom: 10px;
+}
+
+.summary-label {
+    font-size: 1.2rem;
+    color: #888;
+}
+
+/* RWD */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        position: fixed;
+        left: -250px;
+        top: 0;
+        width: 250px;
+        height: 100vh;
+        z-index: 1000;
+        background: #171717;
+        transition: left 0.3s;
+    }
+    .sidebar.open {
+        left: 0;
+    }
+    .sidebar-toggle {
+        display: block;
+    }
+    .container {
+        grid-template-columns: 1fr;
+    }
+    .main-content {
+        padding-left: 0;
+    }
+    
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .air-quality-container {
+        flex-direction: column;
+    }
+    
+    .chart-container {
+        height: 200px;
+    }
+}

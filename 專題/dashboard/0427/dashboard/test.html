@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>環境監控面板</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background-color: #F2EFE7;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding-top: 2rem;
+        }
+        .btn-group {
+        display: flex;
+        gap: 1rem;
+        }
+        button {
+        background-color: #48A6A7;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+        }
+        button:hover {
+        background-color: #2973B2;
+        }
+        .panel {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        width: 80%;
+        max-width: 600px;
+        }
+        #decibel {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #9ACBD0;
+        text-align: center;
+        }
+    </style>
+    </head>
+    <body>
+    <div class="btn-group">
+        <button onclick="openDoor()">開門</button>
+        <button onclick="closeDoor()">關門</button>
+    </div>
+
+    <div class="panel">
+        <canvas id="airChart"></canvas>
+    </div>
+
+    <div class="panel">
+        <div id="decibel">分貝：-- dB</div>
+    </div>
+
+    <script>
+        function openDoor() {
+        alert("開門指令已送出");
+        // AJAX 呼叫可加在此
+        }
+
+        function closeDoor() {
+        alert("關門指令已送出");
+        // AJAX 呼叫可加在此
+        }
+
+        const ctx = document.getElementById('airChart').getContext('2d');
+        const airChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['10:00', '10:05', '10:10', '10:15', '10:20', '10:25'],
+            datasets: [{
+            label: 'PM2.5 (μg/m³)',
+            data: [30, 28, 26, 35, 32, 29],
+            borderColor: '#2973B2',
+            backgroundColor: 'rgba(41, 115, 178, 0.1)',
+            tension: 0.3,
+            fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+            y: {
+                beginAtZero: true
+            }
+            }
+        }
+        });
+
+        // 模擬每秒更新分貝值
+        setInterval(() => {
+        const db = Math.floor(50 + Math.random() * 20);
+        document.getElementById("decibel").innerText = `分貝：${db} dB`;
+        }, 1000);
+    </script>
+</body>
+</html>
