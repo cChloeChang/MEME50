@@ -159,5 +159,5 @@ static struct spi_driver rc522_driver = {
 module_spi_driver(rc522_driver);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("You");
+MODULE_AUTHOR("CC");
 MODULE_DESCRIPTION("RC522 RFID Reader with real UID detection");
